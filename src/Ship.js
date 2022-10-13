@@ -1,6 +1,11 @@
 import {keyPress, Input} from './Inputs'
 
 // Define ship attributes
+let position = {
+  x: 512 - 25,
+  y: 384 - 45
+}
+
 let velocity = {
   x: 0,
   y: 0
@@ -78,6 +83,14 @@ let updateShip = () => {
 
   thrustPercent = Math.round(thrust * 2.5)
   document.getElementById('thrust-percent').innerHTML = thrustPercent
+
+  position.x += velocity.x / 300
+  position.y += velocity.y / 300
+
+  if (position.x < 200) position.x = 200
+  if (position.x > (1024 - 200)) position.x = (1024 - 200)
+  if (position.y < 200) position.y = 200
+  if (position.y > (768 - 200)) position.y= (768 - 200)
 }
 
 let drawShip = (ctx) => {
@@ -85,13 +98,13 @@ let drawShip = (ctx) => {
   const ship = document.getElementById('ship')
 
   // Rotate ship
-  ctx.translate((512 - 25) + (50 / 2), (384 - 45) + (90 / 2))
+  ctx.translate(position.x + (50 / 2), position.y + (90 / 2))
   ctx.rotate(direction + (Math.PI / 2))
-  ctx.translate(-((512 - 25) + (50 / 2)), -((384 - 45) + (90 / 2)))
+  ctx.translate(-(position.x + (50 / 2)), -(position.y + (90 / 2)))
 
   // Draw ship
   ctx.fillStyle = "hsl(0,50%,100%)"
-  ctx.drawImage(ship, 512 - 25, 384 - 45, 50, 90)
+  ctx.drawImage(ship, position.x, position.y, 50, 90)
 }
 
 export {updateShip, drawShip, velocity}
