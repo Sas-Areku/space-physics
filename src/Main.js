@@ -12,7 +12,10 @@ let y3 = 0
 let x4 = 0
 let y4 = -1024
 
-let speed = 1
+let velocityX = 0
+let velocityY = 0
+
+let acceleration = 0.05
 
 let Main = () => {
   const ctx = document.getElementById("ctx").getContext("2d")
@@ -22,33 +25,20 @@ let Main = () => {
   keyPress()
 
   // Move background
-  if (Input.left) {
-    x1 += speed
-    x2 += speed
-    x3 += speed
-    x4 += speed
-  }
+  if (Input.left) velocityX += acceleration
+  if (Input.right) velocityX -= acceleration
+  if (Input.up) velocityY += acceleration
+  if (Input.down) velocityY -= acceleration
 
-  if (Input.right) {
-    x1 -= speed
-    x2 -= speed
-    x3 -= speed
-    x4 -= speed
-  }
+  x1 += velocityX
+  x2 += velocityX
+  x3 += velocityX
+  x4 += velocityX
 
-  if (Input.up) {
-    y1 += speed
-    y2 += speed
-    y3 += speed
-    y4 += speed
-  }
-
-  if (Input.down) {
-    y1 -= speed
-    y2 -= speed
-    y3 -= speed
-    y4 -= speed
-  }
+  y1 += velocityY
+  y2 += velocityY
+  y3 += velocityY
+  y4 += velocityY
 
   // Repeat background
   if (x1 <= -1024) x1 = x2 + 1024
