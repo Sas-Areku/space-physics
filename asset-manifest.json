@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/space-physics/static/css/main.8e6c66cd.css",
-    "main.js": "/space-physics/static/js/main.feacdb6a.js",
+    "main.js": "/space-physics/static/js/main.83268d64.js",
     "static/js/787.32921bde.chunk.js": "/space-physics/static/js/787.32921bde.chunk.js",
     "static/media/background.jpg": "/space-physics/static/media/background.195c690e8085978ee027.jpg",
     "static/media/icon2.png": "/space-physics/static/media/icon2.f6555e0672ce2732e2e1.png",
     "static/media/Ship.png": "/space-physics/static/media/Ship.d561486a47177d26eef7.png",
     "index.html": "/space-physics/index.html",
     "main.8e6c66cd.css.map": "/space-physics/static/css/main.8e6c66cd.css.map",
-    "main.feacdb6a.js.map": "/space-physics/static/js/main.feacdb6a.js.map",
+    "main.83268d64.js.map": "/space-physics/static/js/main.83268d64.js.map",
     "787.32921bde.chunk.js.map": "/space-physics/static/js/787.32921bde.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8e6c66cd.css",
-    "static/js/main.feacdb6a.js"
+    "static/js/main.83268d64.js"
   ]
 }
