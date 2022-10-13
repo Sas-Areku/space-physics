@@ -1,4 +1,4 @@
-import { velocityX, velocityY } from './Ship'
+import { velocity } from './Ship'
 
 // Initialize background position
 let x1 = 0
@@ -15,8 +15,10 @@ let y4 = -1024
 
 // Draw background
 let drawBackground = (ctx) => {
-  let background = document.getElementById('background')
+  // Get background texture
+  const background = document.getElementById('background')
 
+  // Draw background grid
   ctx.drawImage(background, x1, y1)
   ctx.drawImage(background, x2, y2)
   ctx.drawImage(background, x3, y3)
@@ -24,18 +26,18 @@ let drawBackground = (ctx) => {
 }
 
 // Update background position
-let updateBackground = (updateShip) => {
+let updateBackground = () => {
 
   // Move background based on ship velocity
-  x1 += velocityX
-  x2 += velocityX
-  x3 += velocityX
-  x4 += velocityX
+  x1 += velocity.x / 10 * -1
+  x2 += velocity.x / 10 * -1
+  x3 += velocity.x / 10 * -1
+  x4 += velocity.x / 10 * -1
 
-  y1 += velocityY
-  y2 += velocityY
-  y3 += velocityY
-  y4 += velocityY
+  y1 += velocity.y / 10 * -1
+  y2 += velocity.y / 10 * -1
+  y3 += velocity.y / 10 * -1
+  y4 += velocity.y / 10 * -1
 
   // Repeat background
   if (x1 <= -1024) x1 = x2 + 1024

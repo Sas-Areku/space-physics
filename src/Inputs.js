@@ -23,6 +23,15 @@ let keyPress = () => {
 
     } else if (event.code === 'ArrowDown') {
       Input.down = true
+
+    } else if (event.code === 'ShiftLeft') {
+      Input.shift = true
+
+    } else if (event.code === 'ControlLeft') {
+      Input.ctrl = true
+
+    } else if (event.code === 'Space') {
+      Input.space = true
     }
   }, {once: true})
 
@@ -39,6 +48,15 @@ let keyPress = () => {
 
     } else if (event.code === 'ArrowDown') {
       Input.down = false
+
+    } else if (event.code === 'ShiftLeft') {
+      Input.shift = false
+
+    } else if (event.code === 'ControlLeft') {
+      Input.ctrl = false
+
+    } else if (event.code === 'Space') {
+      Input.space = false
     }
   }, {once: true})
 }
