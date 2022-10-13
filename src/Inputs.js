@@ -8,6 +8,7 @@ let Input = {
   space: false,
   x: false,
   z: false,
+  t: false,
 }
 
 let keyPress = () => {
@@ -40,6 +41,9 @@ let keyPress = () => {
 
     } else if (event.code === 'KeyZ') {
       Input.z = true
+
+    } else if (event.code === 'KeyT') {
+      Input.t = true
     }
   }, {once: true})
 
@@ -71,6 +75,9 @@ let keyPress = () => {
 
     } else if (event.code === 'KeyZ') {
       Input.z = false
+
+    } else if (event.code === 'KeyT') {
+      Input.t = false
     }
   }, {once: true})
 }

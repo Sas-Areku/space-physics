@@ -23,6 +23,9 @@ let mass = 100
 let direction = -(Math.PI / 2) // North
 let rotationSpeed = 0
 
+let sas = false
+let sasPermission = false
+let sasStatus = "Off"
 
 let updateShip = () => {
   // Accept keyboard input
@@ -44,6 +47,24 @@ let updateShip = () => {
 
   if (rotationSpeed > 0.05) rotationSpeed = 0.05
   if (rotationSpeed < -0.05) rotationSpeed = -0.05
+
+  if (Input.t) {
+    if (sasPermission === false) {
+      sas = !sas
+    }
+    sasPermission = true
+  } else {
+    sasPermission = false
+  }
+
+  if (sas) {
+    rotationSpeed = 0
+    sasStatus = "On"
+  } else {
+    sasStatus = "Off"
+  }
+
+  document.getElementById('sas').innerHTML = sasStatus
 
   //Ship thrust
   if (Input.shift) thrust += 0.35
@@ -73,4 +94,4 @@ let drawShip = (ctx) => {
   ctx.drawImage(ship, 512 - 25, 384 - 45, 50, 90)
 }
 
-export {updateShip, drawShip, velocity, thrustPercent}
+export {updateShip, drawShip, velocity}

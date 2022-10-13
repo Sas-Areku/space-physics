@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Main from './Main'
-import {thrustPercent} from './Ship'
 
 import background from './textures/background.jpg'
 import ship from './textures/Ship.png'
@@ -38,12 +37,14 @@ let App = () => {
             <li><strong>Cut Throttle:</strong> X</li>
             <li><strong>Rotate left:</strong> Left Arrow</li>
             <li><strong>Rotate right:</strong> Right Arrow</li>
+            <li><strong>Toggle SAS:</strong> T</li>
           </ul>
         </div>
         <div className="right">
           <h3>Status:</h3>
           <ul>
             <li><strong>Thrust: </strong><span id="thrust-percent"></span>%</li>
+            <li><strong>SAS: </strong><span id="sas"></span></li>
           </ul>
         </div>
       </div>
