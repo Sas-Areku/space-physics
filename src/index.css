@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: #1A1A1A;
+  background-color: #050505;
   color: white;
   overflow: hidden;
 }
@@ -80,9 +80,9 @@ body {
 
 .right {
   float: right;
-  width: 300px;
+  width: 200px;
 }
 
 .right h3 {
-  text-align: right;
+  text-align: left;
 }
