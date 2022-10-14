@@ -104,8 +104,11 @@ let updateShip = () => {
   document.getElementById('velocity').innerHTML = speed.total
 
   // Ship camera
-  position.x += velocity.x / 300
-  position.y += velocity.y / 300
+  position.x = (512 - 25) + velocity.x
+  position.y = (384 - 45) + velocity.y
+
+  /* position.x += velocity.x / 300
+  position.y += velocity.y / 300 */
 
   if (position.x < 200) position.x = 200
   if (position.x > (1024 - 200)) position.x = (1024 - 200)
