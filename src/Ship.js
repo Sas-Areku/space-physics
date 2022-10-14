@@ -6,6 +6,12 @@ let position = {
   y: 384 - 45
 }
 
+let speed = {
+  x: 512 - 25,
+  y: 384 - 45,
+  total: 0
+}
+
 let velocity = {
   x: 0,
   y: 0
@@ -71,7 +77,7 @@ let updateShip = () => {
 
   document.getElementById('sas').innerHTML = sasStatus
 
-  //Ship thrust
+  // Ship thrust
   if (Input.shift) thrust += 0.35
   if (Input.ctrl) thrust -= 0.35
 
@@ -84,6 +90,16 @@ let updateShip = () => {
   thrustPercent = Math.round(thrust * 2.5)
   document.getElementById('thrust-percent').innerHTML = thrustPercent
 
+  speed.x = velocity.x
+  speed.y = velocity.y
+
+  if (speed.x < 0) speed.x *= -1
+  if (speed.y < 0) speed.y *= -1
+
+  speed.total = Math.round((Math.sqrt((speed.x * speed.x) + (speed.y * speed.y)) + Number.EPSILON) * 100) / 100
+  document.getElementById('velocity').innerHTML = speed.total
+
+  // Ship camera
   position.x += velocity.x / 300
   position.y += velocity.y / 300
 

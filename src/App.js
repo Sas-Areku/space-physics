@@ -45,6 +45,7 @@ let App = () => {
           <ul>
             <li><strong>Thrust: </strong><span id="thrust-percent"></span>%</li>
             <li><strong>SAS: </strong><span id="sas"></span></li>
+            <li><strong>Velocity: </strong><span id="velocity"></span>m/s</li>
           </ul>
         </div>
       </div>
