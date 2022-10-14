@@ -29,15 +29,15 @@ let drawBackground = (ctx) => {
 let updateBackground = () => {
 
   // Move background based on ship velocity
-  x1 += velocity.x / 10 * -1
-  x2 += velocity.x / 10 * -1
-  x3 += velocity.x / 10 * -1
-  x4 += velocity.x / 10 * -1
+  x1 += velocity.x / 20 * -1
+  x2 += velocity.x / 20 * -1
+  x3 += velocity.x / 20 * -1
+  x4 += velocity.x / 20 * -1
 
-  y1 += velocity.y / 10 * -1
-  y2 += velocity.y / 10 * -1
-  y3 += velocity.y / 10 * -1
-  y4 += velocity.y / 10 * -1
+  y1 += velocity.y / 20 * -1
+  y2 += velocity.y / 20 * -1
+  y3 += velocity.y / 20 * -1
+  y4 += velocity.y / 20 * -1
 
   // Repeat background
   if (x1 <= -1024) x1 = x2 + 1024

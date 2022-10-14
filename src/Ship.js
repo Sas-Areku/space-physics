@@ -38,6 +38,10 @@ let sas = false
 let sasPermission = false
 let sasStatus = "Off"
 
+let animation = 0
+let animationFPS = 4
+let animationFrame = 0
+
 let updateShip = () => {
   // Accept keyboard input
   keyPress()
@@ -112,6 +116,15 @@ let updateShip = () => {
 let drawShip = (ctx) => {
   // Get ship sprite
   const ship = document.getElementById('ship')
+  const thrust = document.getElementById('thrust')
+
+  // Animation frame
+  animation++
+
+  if (animation % animationFPS === 0) {
+    animationFrame += 239
+    if (animationFrame >= 956) animationFrame = 0
+  }
 
   // Rotate ship
   ctx.translate(position.x + (50 / 2), position.y + (90 / 2))
@@ -119,8 +132,17 @@ let drawShip = (ctx) => {
   ctx.translate(-(position.x + (50 / 2)), -(position.y + (90 / 2)))
 
   // Draw ship
-  ctx.fillStyle = "hsl(0,50%,100%)"
   ctx.drawImage(ship, position.x, position.y, 50, 90)
+
+  if (thrustPercent > 0) {
+    ctx.drawImage(
+      thrust,
+      0, animationFrame, // Coord of crop
+      157, 239, // Size of crop
+      position.x+25 + ((thrustPercent * -1) / 8.34), position.y+78, // Coord of displayed image
+      thrustPercent / (100 / 25), thrustPercent / (100 / 38) // Size of displayed image
+    )
+  }
 }
 
 export {updateShip, drawShip, velocity}

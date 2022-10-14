@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import Main from './Main'
 
-import background from './textures/background.jpg'
+import background from './textures/background3.jpg'
 import ship from './textures/Ship.png'
+import thrust from './textures/thrust.png'
 import logo from './Images/icon2.png'
 
 let App = () => {
@@ -25,6 +26,7 @@ let App = () => {
         <canvas id="ctx" width="1024px" height="768px"></canvas>
         <img src={background} id="background" style={{display: 'none'}}></img>
         <img src={ship} id="ship" style={{display: 'none'}}></img>
+        <img src={thrust} id="thrust" style={{display: 'none'}}></img>
       </div>
 
       <div className="footer">
