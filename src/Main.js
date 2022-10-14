@@ -3,6 +3,8 @@ import { updateShip, drawShip } from './Ship'
 
 let Main = () => {
   const ctx = document.getElementById("ctx").getContext("2d")
+  ctx.canvas.width  = window.innerWidth
+  ctx.canvas.height = window.innerHeight
 
   // Update functions
   updateBackground()

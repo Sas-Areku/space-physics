@@ -1,14 +1,17 @@
 import {keyPress, Input} from './Inputs'
 
+let width = window.innerWidth
+let height = window.innerHeight
+
 // Define ship attributes
 let position = {
-  x: 512 - 25,
-  y: 384 - 45
+  x: (width / 2) - 25,
+  y: (height / 2) - 45
 }
 
 let speed = {
-  x: 512 - 25,
-  y: 384 - 45,
+  x: (width / 2) - 25,
+  y: (height / 2) - 45,
   total: 0
 }
 
@@ -45,6 +48,10 @@ let animationFrame = 0
 let updateShip = () => {
   // Accept keyboard input
   keyPress()
+
+  // Resize window
+  width = window.innerWidth
+  height = window.innerHeight
 
   // Ship physics
   force.x = Math.cos(direction) * thrust
@@ -104,16 +111,16 @@ let updateShip = () => {
   document.getElementById('velocity').innerHTML = speed.total
 
   // Ship camera
-  position.x = (512 - 25) + velocity.x
-  position.y = (384 - 45) + velocity.y
+  position.x = ((width / 2) - 25) + velocity.x
+  position.y = ((height / 2) - 45) + velocity.y
 
   /* position.x += velocity.x / 300
   position.y += velocity.y / 300 */
 
   if (position.x < 200) position.x = 200
-  if (position.x > (1024 - 200)) position.x = (1024 - 200)
+  if (position.x > (width - 200)) position.x = (width - 200)
   if (position.y < 200) position.y = 200
-  if (position.y > (768 - 200)) position.y= (768 - 200)
+  if (position.y > (height - 200)) position.y= (height - 200)
 }
 
 let drawShip = (ctx) => {

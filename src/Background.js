@@ -1,17 +1,26 @@
 import { velocity } from './Ship'
 
+let size = 2048
+let originX = 0
+let originY = 0
+
 // Initialize background position
-let x1 = 0
+let position1 = { x: originX, y: originY}
+let position2 = { x: originX-size, y: originY-size}
+let position3 = { x: originX-size, y: originY}
+let position4 = { x: originX, y: originY-size}
+
+/* let x1 = 0
 let y1 = 0
 
-let x2 = -1024
-let y2 = -1024
+let x2 = -size
+let y2 = -size
 
-let x3 = -1024
+let x3 = -size
 let y3 = 0
 
 let x4 = 0
-let y4 = -1024
+let y4 = -size */
 
 // Draw background
 let drawBackground = (ctx) => {
@@ -19,46 +28,50 @@ let drawBackground = (ctx) => {
   const background = document.getElementById('background')
 
   // Draw background grid
-  ctx.drawImage(background, x1, y1)
-  ctx.drawImage(background, x2, y2)
-  ctx.drawImage(background, x3, y3)
-  ctx.drawImage(background, x4, y4)
+  ctx.drawImage(background, position1.x, position1.y)
+  ctx.drawImage(background, position2.x, position2.y)
+  ctx.drawImage(background, position3.x, position3.y)
+  ctx.drawImage(background, position4.x, position4.y)
 }
 
 // Update background position
 let updateBackground = () => {
 
   // Move background based on ship velocity
-  x1 += velocity.x / 20 * -1
-  x2 += velocity.x / 20 * -1
-  x3 += velocity.x / 20 * -1
-  x4 += velocity.x / 20 * -1
+  position1.x += velocity.x / 20 * -1
+  position2.x += velocity.x / 20 * -1
+  position3.x += velocity.x / 20 * -1
+  position4.x += velocity.x / 20 * -1
 
-  y1 += velocity.y / 20 * -1
-  y2 += velocity.y / 20 * -1
-  y3 += velocity.y / 20 * -1
-  y4 += velocity.y / 20 * -1
+  position1.y += velocity.y / 20 * -1
+  position2.y += velocity.y / 20 * -1
+  position3.y += velocity.y / 20 * -1
+  position4.y += velocity.y / 20 * -1
 
   // Repeat background
-  if (x1 <= -1024) x1 = x2 + 1024
-  if (x1 >= 1024) x1 = x2 - 1024
-  if (y1 <= -1024) y1 = y4 + 1024
-  if (y1 >= 1024) y1 = y4 - 1024
+  // Cell 1
+  if (position1.x <= originX-size) position1.x = position2.x + size
+  if (position1.x >= originX+size) position1.x = position2.x - size
+  if (position1.y <= originY-size) position1.y = position4.y + size
+  if (position1.y >= originY+size) position1.y = position4.y - size
 
-  if (x2 <= -1024) x2 = x1 + 1024
-  if (x2 >= 1024) x2 = x1 - 1024
-  if (y2 <= -1024) y2 = y3 + 1024
-  if (y2 >= 1024) y2 = y3 - 1024
+  // Cell 2
+  if (position2.x <= originX-size) position2.x = position1.x + size
+  if (position2.x >= originX+size) position2.x = position1.x - size
+  if (position2.y <= originY-size) position2.y = position3.y + size
+  if (position2.y >= originY+size) position2.y = position3.y - size
 
-  if (x3 <= -1024) x3 = x4 + 1024
-  if (x3 >= 1024) x3 = x4 - 1024
-  if (y3 <= -1024) y3 = y2 + 1024
-  if (y3 >= 1024) y3 = y2 - 1024
+  // Cell 3
+  if (position3.x <= originX-size) position3.x = position4.x + size
+  if (position3.x >= originX+size) position3.x = position4.x - size
+  if (position3.y <= originY-size) position3.y = position2.y + size
+  if (position3.y >= originY+size) position3.y = position2.y - size
 
-  if (x4 <= -1024) x4 = x3 + 1024
-  if (x4 >= 1024) x4 = x3 - 1024
-  if (y4 <= -1024) y4 = y1 + 1024
-  if (y4 >= 1024) y4 = y1 - 1024
+  // Cell 4
+  if (position4.x <= originX-size) position4.x = position3.x + size
+  if (position4.x >= originX+size) position4.x = position3.x - size
+  if (position4.y <= originY-size) position4.y = position1.y + size
+  if (position4.y >= originY+size) position4.y = position1.y - size
 }
 
 export {drawBackground, updateBackground}
