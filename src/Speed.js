@@ -1,8 +1,10 @@
 import { velocity } from './Ship'
 
-let size = 2048
+let size = 4096
 let originX = 0
 let originY = 0
+
+let alpha = 0
 
 // Initialize background position
 let position1 = { x: originX, y: originY}
@@ -23,30 +25,39 @@ let x4 = 0
 let y4 = -size */
 
 // Draw background
-let drawBackground = (ctx) => {
+let drawSpeed = (ctx) => {
   // Get background texture
-  const background = document.getElementById('background')
+  const speed = document.getElementById('speed')
 
-  // Draw background grid
-  ctx.drawImage(background, position1.x, position1.y)
-  ctx.drawImage(background, position2.x, position2.y)
-  ctx.drawImage(background, position3.x, position3.y)
-  ctx.drawImage(background, position4.x, position4.y)
-}
+   // Draw background grid
+   ctx.globalAlpha = alpha
+   ctx.drawImage(speed, position1.x, position1.y)
+   ctx.drawImage(speed, position2.x, position2.y)
+   ctx.drawImage(speed, position3.x, position3.y)
+   ctx.drawImage(speed, position4.x, position4.y)
+   ctx.globalAlpha = 1.0
+ }
+ 
+ // Update background position
+ let updateSpeed = () => {
 
-// Update background position
-let updateBackground = () => {
-
-  // Move background based on ship velocity
-  position1.x += velocity.x / 100 * -1
-  position2.x += velocity.x / 100 * -1
-  position3.x += velocity.x / 100 * -1
-  position4.x += velocity.x / 100 * -1
-
-  position1.y += velocity.y / 100 * -1
-  position2.y += velocity.y / 100 * -1
-  position3.y += velocity.y / 100 * -1
-  position4.y += velocity.y / 100 * -1
+  if (velocity.total > 50) {
+    alpha = velocity.total / 500
+    console.log(alpha)
+  } else {
+    alpha = 0
+  }
+ 
+   // Move background based on ship velocity
+   position1.x += velocity.x / 10 * -1
+   position2.x += velocity.x / 10 * -1
+   position3.x += velocity.x / 10 * -1
+   position4.x += velocity.x / 10 * -1
+ 
+   position1.y += velocity.y / 10 * -1
+   position2.y += velocity.y / 10 * -1
+   position3.y += velocity.y / 10 * -1
+   position4.y += velocity.y / 10 * -1
 
   // Repeat background
   // Cell 1
@@ -74,4 +85,4 @@ let updateBackground = () => {
   if (position4.y >= originY+size) position4.y = position1.y - size
 }
 
-export {drawBackground, updateBackground}
+export {drawSpeed, updateSpeed}

@@ -1,4 +1,5 @@
 import { updateBackground, drawBackground } from './Background'
+import { updateSpeed, drawSpeed } from './Speed'
 import { updateShip, drawShip } from './Ship'
 
 let Main = () => {
@@ -8,6 +9,7 @@ let Main = () => {
 
   // Update functions
   updateBackground()
+  updateSpeed()
   updateShip()
 
   // Render canvas
@@ -15,6 +17,7 @@ let Main = () => {
 
   // Background
   drawBackground(ctx)
+  drawSpeed(ctx)
 
   // Ship
   drawShip(ctx)

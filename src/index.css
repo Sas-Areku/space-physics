@@ -63,6 +63,7 @@ body {
 
 .footer h3 {
   font-size: 24pt;
+  font-weight: 600;
 }
 
 .footer ul {
@@ -72,6 +73,11 @@ body {
 
 .footer ul li {
   list-style: none;
+  font-weight: 200;
+}
+
+.footer strong {
+  font-weight: 400;
 }
 
 .left {
@@ -80,7 +86,7 @@ body {
 
 .right {
   float: right;
-  width: 300px;
+  width: 200px;
 }
 
 .right h3 {

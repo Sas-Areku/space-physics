@@ -9,15 +9,10 @@ let position = {
   y: (height / 2) - 45
 }
 
-let speed = {
-  x: (width / 2) - 25,
-  y: (height / 2) - 45,
-  total: 0
-}
-
 let velocity = {
   x: 0,
-  y: 0
+  y: 0,
+  total: 0
 }
 
 let acceleration = {
@@ -101,14 +96,15 @@ let updateShip = () => {
   thrustPercent = Math.round(thrust * 2.5)
   document.getElementById('thrust-percent').innerHTML = thrustPercent
 
-  speed.x = velocity.x
-  speed.y = velocity.y
 
-  if (speed.x < 0) speed.x *= -1
-  if (speed.y < 0) speed.y *= -1
+  // Calculate total velocity
+  velocity.total = Math.round(
+    (Math.sqrt(
+      (velocity.x * velocity.x) + (velocity.y * velocity.y)
+    ) + Number.EPSILON)
+  )
 
-  speed.total = Math.round((Math.sqrt((speed.x * speed.x) + (speed.y * speed.y)) + Number.EPSILON) * 100) / 100
-  document.getElementById('velocity').innerHTML = speed.total
+  document.getElementById('velocity').innerHTML = velocity.total
 
   // Ship camera
   position.x = ((width / 2) - 25) + velocity.x
