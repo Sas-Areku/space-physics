@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/space-physics/static/css/main.92bb9be2.css",
-    "main.js": "/space-physics/static/js/main.89163306.js",
+    "main.css": "/space-physics/static/css/main.6231563b.css",
+    "main.js": "/space-physics/static/js/main.8f6793f7.js",
     "static/js/787.32921bde.chunk.js": "/space-physics/static/js/787.32921bde.chunk.js",
     "static/media/background3.jpg": "/space-physics/static/media/background3.abc669827e03f29c9f5f.jpg",
     "static/media/thrust.png": "/space-physics/static/media/thrust.4284bbdfb0f938df4c9d.png",
+    "static/media/speed.png": "/space-physics/static/media/speed.21bdb894f56ff22b17f4.png",
     "static/media/icon2.png": "/space-physics/static/media/icon2.f6555e0672ce2732e2e1.png",
     "static/media/Ship.png": "/space-physics/static/media/Ship.92908c4aaa1e2e93c8ec.png",
     "index.html": "/space-physics/index.html",
-    "main.92bb9be2.css.map": "/space-physics/static/css/main.92bb9be2.css.map",
-    "main.89163306.js.map": "/space-physics/static/js/main.89163306.js.map",
+    "main.6231563b.css.map": "/space-physics/static/css/main.6231563b.css.map",
+    "main.8f6793f7.js.map": "/space-physics/static/js/main.8f6793f7.js.map",
     "787.32921bde.chunk.js.map": "/space-physics/static/js/787.32921bde.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.92bb9be2.css",
-    "static/js/main.89163306.js"
+    "static/css/main.6231563b.css",
+    "static/js/main.8f6793f7.js"
   ]
 }
