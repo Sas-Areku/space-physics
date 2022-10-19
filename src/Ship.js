@@ -129,6 +129,7 @@ let drawShip = (ctx) => {
   }
 
   // Rotate ship
+  ctx.save()
   ctx.translate(position.x + (50 / 2), position.y + (90 / 2))
   ctx.rotate(direction + (Math.PI / 2))
   ctx.translate(-(position.x + (50 / 2)), -(position.y + (90 / 2)))
@@ -145,6 +146,7 @@ let drawShip = (ctx) => {
       thrustPercent / (100 / 25), thrustPercent / (100 / 38) // Size of displayed image
     )
   }
+  ctx.restore()
 }
 
 export {updateShip, drawShip, velocity}

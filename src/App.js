@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Setup, Update } from './Main'
+import { Update } from './Main'
 
 import background from './textures/background3.jpg'
 import speed from './textures/speed.png'
@@ -22,7 +22,6 @@ import terminateUp from './textures/obstacles/terminateUp.png'
 let App = () => {
 
   useEffect(() => {
-    Setup()
     const interval = setInterval(() => {
       Update()
     }, 16.66)

@@ -35,60 +35,68 @@ let ObstacleGenerator = (length) => {
   }
 
   let randomVariant = (x) => {
-    Math.floor(Math.random() * x)
+    return Math.floor(Math.random() * x)
   }
 
   // Starting obstacle
-  obstacles[0] = new Obstacle(startPosition, variants.down[3])
+  obstacles.push(new Obstacle(startPosition, variants.down[3]))
 
   // Obstacles in between start and end
   for(let i = 1; i < length; i++) {
+    // Get direction of previous obstacle
     let direction = obstacles[i-1].next().direction
 
+    // Generate new obstacle based on previous direction
     if (direction === 'up') {
-      obstacles[i] = new Obstacle(
+      obstacles.push(new Obstacle(
         obstacles[i-1].next(), 
         variants.up[randomVariant(3)]
-      )
+      ))
+
     } else if (direction === 'down') {
-      obstacles[i] = new Obstacle(
+      obstacles.push(new Obstacle(
         obstacles[i-1].next(), 
         variants.down[randomVariant(3)]
-      )
+      ))
+
     } else if (direction === 'left') {
-      obstacles[i] = new Obstacle(
+      obstacles.push(new Obstacle(
         obstacles[i-1].next(), 
         variants.left[randomVariant(3)]
-      )
+      ))
+
     } else if (direction === 'right') {
-      obstacles[i] = new Obstacle(
+      obstacles.push(new Obstacle(
         obstacles[i-1].next(), 
         variants.right[randomVariant(3)]
-      )
+      ))
     }
   }
 
   // Ending Obstacle
-  if (obstacles[length-1].next().direction === 'up') {
-    obstacles[length] = new Obstacle(
+  if (obstacles[length-1].next.direction === 'up') {
+    obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
       variants.up[3]
-    )
-  } else if (obstacles[length-1].next().direction === 'down') {
-    obstacles[length] = new Obstacle(
+    ))
+
+  } else if (obstacles[length-1].next.direction === 'down') {
+    obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
-      variants.up[3]
-    )
-  } else if (obstacles[length-1].next().direction === 'left') {
-    obstacles[length] = new Obstacle(
+      variants.down[3]
+    ))
+
+  } else if (obstacles[length-1].next.direction === 'left') {
+    obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
-      variants.up[3]
-    )
-  } else if (obstacles[length-1].next().direction === 'right') {
-    obstacles[length] = new Obstacle(
+      variants.left[3]
+    ))
+
+  } else if (obstacles[length-1].next.direction === 'right') {
+    obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
-      variants.up[3]
-    )
+      variants.right[3]
+    ))
   }
 }
 

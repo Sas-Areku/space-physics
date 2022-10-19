@@ -4,7 +4,7 @@ class Obstacle {
   constructor(position, variant) {
     this.position = position
     this.variant = variant
-    this.size = 2048
+    this.size = 2047
   }
 
   display = (ctx) => {
@@ -35,19 +35,19 @@ class Obstacle {
     if (this.variant === 'rightLeft') direction = 'up'
     if (this.variant === 'leftRight') direction = 'up'
 
-    // Variants resulting in an 'down' next direction
+    // Variants resulting in a 'down' next direction
     if (this.variant === 'terminateUp') direction = 'down'
     if (this.variant === 'straightDown') direction = 'down'
     if (this.variant === 'leftLeft') direction = 'down'
     if (this.variant === 'rightRight') direction = 'down'
 
-    // Variants resulting in an 'left' next direction
+    // Variants resulting in a 'left' next direction
     if (this.variant === 'terminateRight') direction = 'left'
     if (this.variant === 'straightLeft') direction = 'left'
     if (this.variant === 'leftUp') direction = 'left'
     if (this.variant === 'leftDown') direction = 'left'
 
-    // Variants resulting in an 'right' next direction
+    // Variants resulting in a 'right' next direction
     if (this.variant === 'terminateLeft') direction = 'right'
     if (this.variant === 'straightRight') direction = 'right'
     if (this.variant === 'rightUp') direction = 'right'
@@ -61,7 +61,7 @@ class Obstacle {
       }
       return next
 
-    } else if (this.direction === 'down') {
+    } else if (direction === 'down') {
       next = {
         x: this.position.x,
         y: this.position.y + this.size,
@@ -69,7 +69,7 @@ class Obstacle {
       }
       return next
 
-    } else if (this.direction === 'left') {
+    } else if (direction === 'left') {
       next = {
         x: this.position.x - this.size,
         y: this.position.y,
@@ -77,7 +77,7 @@ class Obstacle {
       }
       return next
 
-    } else if (this.direction === 'right') {
+    } else if (direction === 'right') {
       next = {
         x: this.position.x + this.size,
         y: this.position.y,
