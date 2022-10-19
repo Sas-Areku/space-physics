@@ -28,10 +28,13 @@ let variants = {
   ]
 }
 
+let history = []
+
 let ObstacleGenerator = (length) => {
   const startPosition = {
     x: window.innerWidth / 2,
-    y: window.innerHeight / 2
+    y: window.innerHeight / 2,
+    direction: 'up'
   }
 
   let randomVariant = (x) => {
@@ -43,6 +46,8 @@ let ObstacleGenerator = (length) => {
 
   // Obstacles in between start and end
   for(let i = 1; i < length; i++) {
+    console.log(history)
+
     // Get direction of previous obstacle
     let direction = obstacles[i-1].next().direction
 
@@ -74,25 +79,25 @@ let ObstacleGenerator = (length) => {
   }
 
   // Ending Obstacle
-  if (obstacles[length-1].next.direction === 'up') {
+  if (obstacles[length-1].next().direction === 'up') {
     obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
       variants.up[3]
     ))
 
-  } else if (obstacles[length-1].next.direction === 'down') {
+  } else if (obstacles[length-1].next().direction === 'down') {
     obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
       variants.down[3]
     ))
 
-  } else if (obstacles[length-1].next.direction === 'left') {
+  } else if (obstacles[length-1].next().direction === 'left') {
     obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
       variants.left[3]
     ))
 
-  } else if (obstacles[length-1].next.direction === 'right') {
+  } else if (obstacles[length-1].next().direction === 'right') {
     obstacles.push(new Obstacle(
       obstacles[length-1].next(), 
       variants.right[3]
@@ -100,4 +105,4 @@ let ObstacleGenerator = (length) => {
   }
 }
 
-export { ObstacleGenerator, obstacles }
+export { ObstacleGenerator, obstacles, history }

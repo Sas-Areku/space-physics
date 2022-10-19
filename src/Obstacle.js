@@ -1,10 +1,12 @@
 import { velocity } from './Ship'
+import { history } from './ObstacleGenerator'
 
 class Obstacle {
   constructor(position, variant) {
     this.position = position
     this.variant = variant
-    this.size = 2047
+    this.size = 50
+    history.push(position)
   }
 
   display = (ctx) => {
@@ -15,7 +17,9 @@ class Obstacle {
     ctx.drawImage(
       texture, 
       (this.position.x - (this.size / 2)), 
-      (this.position.y - (this.size / 2))
+      (this.position.y - (this.size / 2)),
+      this.size,
+      this.size
     )
   }
 
@@ -56,7 +60,7 @@ class Obstacle {
     if (direction === 'up') {
       next = {
         x: this.position.x,
-        y: this.position.y - this.size,
+        y: this.position.y - this.size + 1,
         direction: 'up'
       }
       return next
@@ -64,14 +68,14 @@ class Obstacle {
     } else if (direction === 'down') {
       next = {
         x: this.position.x,
-        y: this.position.y + this.size,
+        y: this.position.y + this.size - 1,
         direction: 'down'
       }
       return next
 
     } else if (direction === 'left') {
       next = {
-        x: this.position.x - this.size,
+        x: this.position.x - this.size + 1,
         y: this.position.y,
         direction: 'left'
       }
@@ -79,7 +83,7 @@ class Obstacle {
 
     } else if (direction === 'right') {
       next = {
-        x: this.position.x + this.size,
+        x: this.position.x + this.size - 1,
         y: this.position.y,
         direction: 'right'
       }

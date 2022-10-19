@@ -58,8 +58,8 @@ let updateShip = () => {
   // Rotate ship
   direction += rotationSpeed
 
-  if (Input.right) rotationSpeed += thrust / 1000 / mass
-  if (Input.left) rotationSpeed -= thrust / 1000 / mass
+  if (Input.right) rotationSpeed += 40 / 1000 / mass
+  if (Input.left) rotationSpeed -= 40 / 1000 / mass
 
   if (rotationSpeed > 0.05) rotationSpeed = 0.05
   if (rotationSpeed < -0.05) rotationSpeed = -0.05

@@ -43,11 +43,8 @@ let drawSpeed = (ctx) => {
  // Update background position
  let updateSpeed = () => {
 
-  if (velocity.total > 50) {
-    alpha = velocity.total / 500
-  } else {
-    alpha = 0
-  }
+  alpha = velocity.total / 100
+
  
    // Move background based on ship velocity
    position1.x += velocity.x / 10 * -1
