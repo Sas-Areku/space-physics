@@ -10,18 +10,6 @@ let position2 = { x: originX-size, y: originY-size}
 let position3 = { x: originX-size, y: originY}
 let position4 = { x: originX, y: originY-size}
 
-/* let x1 = 0
-let y1 = 0
-
-let x2 = -size
-let y2 = -size
-
-let x3 = -size
-let y3 = 0
-
-let x4 = 0
-let y4 = -size */
-
 // Draw background
 let drawBackground = (ctx) => {
   // Get background texture

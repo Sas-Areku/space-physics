@@ -27,17 +27,16 @@ let force = {
 
 let thrust = 0
 let thrustPercent = 0
-let mass = 100
+const mass = 100
 
 let direction = -(Math.PI / 2) // North
 let rotationSpeed = 0
 
 let sas = false
-let sasPermission = false
 let sasStatus = "Off"
 
 let animation = 0
-let animationFPS = 4
+const animationFPS = 4
 let animationFrame = 0
 
 let updateShip = () => {
@@ -65,13 +64,10 @@ let updateShip = () => {
   if (rotationSpeed > 0.05) rotationSpeed = 0.05
   if (rotationSpeed < -0.05) rotationSpeed = -0.05
 
-  if (Input.t) {
-    if (sasPermission === false) {
-      sas = !sas
-    }
-    sasPermission = true
+  if (Input.s) {
+    sas = true
   } else {
-    sasPermission = false
+    sas = false
   }
 
   if (sas) {

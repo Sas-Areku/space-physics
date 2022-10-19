@@ -30,12 +30,14 @@ let drawSpeed = (ctx) => {
   const speed = document.getElementById('speed')
 
    // Draw background grid
+   ctx.save()
    ctx.globalAlpha = alpha
    ctx.drawImage(speed, position1.x, position1.y)
    ctx.drawImage(speed, position2.x, position2.y)
    ctx.drawImage(speed, position3.x, position3.y)
    ctx.drawImage(speed, position4.x, position4.y)
    ctx.globalAlpha = 1.0
+   ctx.restore()
  }
  
  // Update background position
@@ -43,7 +45,6 @@ let drawSpeed = (ctx) => {
 
   if (velocity.total > 50) {
     alpha = velocity.total / 500
-    console.log(alpha)
   } else {
     alpha = 0
   }
