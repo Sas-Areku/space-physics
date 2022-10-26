@@ -2,24 +2,28 @@ import Obstacle from './Obstacle'
 
 let obstacles = []
 let variants = {
+  // Variants beginning in an up direction
   up: [
     'straightUp',
     'leftUp',
     'rightUp',
     'terminateUp'
   ],
+  // Variants beginning in a down direction
   down: [
     'straightDown',
     'leftDown',
     'rightDown',
     'terminateDown'
   ],
+  // Variants beginning in a left direction
   left: [
     'straightLeft',
     'leftLeft',
     'rightLeft',
     'terminateLeft'
   ],
+  // Variants beginning in a right direction
   right: [
     'straightRight',
     'leftRight',
@@ -73,7 +77,7 @@ let ObstacleGenerator = (length) => {
     } else if (direction === 'right') {
       obstacles.push(new Obstacle(
         obstacles[i-1].next(), 
-        variants.right[randomVariant(3)]
+        variants.right[randomVariant(3)] // "rightRight"
       ))
     }
   }
@@ -105,4 +109,4 @@ let ObstacleGenerator = (length) => {
   }
 }
 
-export { ObstacleGenerator, obstacles, history }
+export { ObstacleGenerator, obstacles, variants, history }

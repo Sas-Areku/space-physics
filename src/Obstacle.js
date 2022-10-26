@@ -1,11 +1,12 @@
 import { velocity } from './Ship'
-import { history } from './ObstacleGenerator'
+import { variants, history } from './ObstacleGenerator'
 
 class Obstacle {
   constructor(position, variant) {
     this.position = position
     this.variant = variant
     this.size = 50
+    this.alreadyTried = ""
     history.push(position)
   }
 
@@ -63,7 +64,6 @@ class Obstacle {
         y: this.position.y - this.size + 1,
         direction: 'up'
       }
-      return next
 
     } else if (direction === 'down') {
       next = {
@@ -71,7 +71,6 @@ class Obstacle {
         y: this.position.y + this.size - 1,
         direction: 'down'
       }
-      return next
 
     } else if (direction === 'left') {
       next = {
@@ -79,7 +78,6 @@ class Obstacle {
         y: this.position.y,
         direction: 'left'
       }
-      return next
 
     } else if (direction === 'right') {
       next = {
@@ -87,10 +85,55 @@ class Obstacle {
         y: this.position.y,
         direction: 'right'
       }
-      return next
 
     }
 
+    let randomVariant = (x) => {
+      return Math.floor(Math.random() * x)
+    }
+
+    for (let i = 0; i < history.length; i++) {
+      if (next.x === history[i].x && next.y === history[i].y) {
+        let newVariant = []
+
+        if (this.position.direction === 'up') {
+          newVariant = variants.up.filter(
+            variant => 
+              variant !== this.variant
+              && variant !== 'terminateUp' 
+              && variant !== this.alreadyTried
+          )
+        } else if (this.position.direction === 'down') {
+          newVariant = variants.down.filter(
+            variant => 
+              variant !== this.variant 
+              && variant !== 'terminateDown' 
+              && variant !== this.alreadyTried
+          )
+        } else if (this.position.direction === 'left') {
+          newVariant = variants.left.filter(
+            variant => 
+              variant !== this.variant 
+              && variant !== 'terminateLeft' 
+              && variant !== this.alreadyTried
+          )
+        } else if (this.position.direction === 'right') {
+          newVariant = variants.right.filter(
+            variant => 
+              variant !== this.variant 
+              && variant !== 'terminateRight' 
+              && variant !== this.alreadyTried
+          )
+        }
+
+        this.alreadyTried = this.variant
+        // console.log(this.alreadyTried)
+        this.variant = newVariant[randomVariant(newVariant.length)]
+        this.next()
+      }
+    }
+
+    return next
   }
 }
 
