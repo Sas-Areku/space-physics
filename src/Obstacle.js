@@ -1,18 +1,24 @@
 import { velocity } from './Ship'
-import { variants, history } from './ObstacleGenerator'
+import { GetVariantExit, RandomVariant, history, variants } from './VariantGenerator'
 
 class Obstacle {
-  constructor(position, variant) {
-    this.position = position
-    this.variant = variant
-    this.size = 50
+  constructor(variant) {
+    this.position = variant.position
+    this.variant = variant.name
+    this.entrance = variant.entrance
+    this.exit = variant.exit
+
     this.alreadyTried = ""
-    history.push(position)
+    this.finalTry = ""
+
+    this.size = 50
+
+    history.push({position: variant.position, name: this.variant})
   }
 
   display = (ctx) => {
     // Get background texture
-    const texture = document.getElementById(this.variant)
+    let texture = document.getElementById(this.variant)
 
     // Display background grid
     ctx.drawImage(
@@ -32,107 +38,96 @@ class Obstacle {
 
   next = () => {
     let next
-    let direction
+    let exit = this.exit
 
-    // Variants resulting in an 'up' next direction
-    if (this.variant === 'terminateDown') direction = 'up'
-    if (this.variant === 'straightUp') direction = 'up'
-    if (this.variant === 'rightLeft') direction = 'up'
-    if (this.variant === 'leftRight') direction = 'up'
-
-    // Variants resulting in a 'down' next direction
-    if (this.variant === 'terminateUp') direction = 'down'
-    if (this.variant === 'straightDown') direction = 'down'
-    if (this.variant === 'leftLeft') direction = 'down'
-    if (this.variant === 'rightRight') direction = 'down'
-
-    // Variants resulting in a 'left' next direction
-    if (this.variant === 'terminateRight') direction = 'left'
-    if (this.variant === 'straightLeft') direction = 'left'
-    if (this.variant === 'leftUp') direction = 'left'
-    if (this.variant === 'leftDown') direction = 'left'
-
-    // Variants resulting in a 'right' next direction
-    if (this.variant === 'terminateLeft') direction = 'right'
-    if (this.variant === 'straightRight') direction = 'right'
-    if (this.variant === 'rightUp') direction = 'right'
-    if (this.variant === 'rightDown') direction = 'right'
-
-    if (direction === 'up') {
+    if (exit === 'N') {
       next = {
-        x: this.position.x,
-        y: this.position.y - this.size + 1,
-        direction: 'up'
+        position: {
+          x: this.position.x,
+          y: this.position.y - this.size + 1,
+        },
+        entrance: 'S'
       }
 
-    } else if (direction === 'down') {
+    } else if (exit === 'S') {
       next = {
-        x: this.position.x,
-        y: this.position.y + this.size - 1,
-        direction: 'down'
+        position: {
+          x: this.position.x,
+          y: this.position.y + this.size - 1,
+        },
+        entrance: 'N'
       }
 
-    } else if (direction === 'left') {
+    } else if (exit === 'W') {
       next = {
-        x: this.position.x - this.size + 1,
-        y: this.position.y,
-        direction: 'left'
+        position: {
+          x: this.position.x - this.size + 1,
+          y: this.position.y,
+        },
+        entrance: 'E'
       }
 
-    } else if (direction === 'right') {
+    } else if (exit === 'E') {
       next = {
-        x: this.position.x + this.size - 1,
-        y: this.position.y,
-        direction: 'right'
+        position: {
+          x: this.position.x + this.size - 1,
+          y: this.position.y,
+        },
+        entrance: 'W'
       }
-
-    }
-
-    let randomVariant = (x) => {
-      return Math.floor(Math.random() * x)
     }
 
     for (let i = 0; i < history.length; i++) {
-      if (next.x === history[i].x && next.y === history[i].y) {
+      if (/* next.position.x === history[i].x && next.position.y === history[i].y */
+        history[i].position.x > next.position.x - (this.size / 5) &&
+        history[i].position.x < next.position.x + (this.size / 5) &&
+        history[i].position.y > next.position.y - (this.size / 5) &&
+        history[i].position.y < next.position.y + (this.size / 5)
+        // Can revert this code to above function once everything works
+      ) {
         let newVariant = []
+        let newVariants
 
-        if (this.position.direction === 'up') {
-          newVariant = variants.up.filter(
-            variant => 
-              variant !== this.variant
-              && variant !== 'terminateUp' 
-              && variant !== this.alreadyTried
-          )
-        } else if (this.position.direction === 'down') {
-          newVariant = variants.down.filter(
-            variant => 
-              variant !== this.variant 
-              && variant !== 'terminateDown' 
-              && variant !== this.alreadyTried
-          )
-        } else if (this.position.direction === 'left') {
-          newVariant = variants.left.filter(
-            variant => 
-              variant !== this.variant 
-              && variant !== 'terminateLeft' 
-              && variant !== this.alreadyTried
-          )
-        } else if (this.position.direction === 'right') {
-          newVariant = variants.right.filter(
-            variant => 
-              variant !== this.variant 
-              && variant !== 'terminateRight' 
-              && variant !== this.alreadyTried
-          )
+        console.log("Histor-key: " + i)
+        console.log("History variant: " + history[i].name)
+
+        console.log("Entrance: " + this.entrance)
+        if (this.entrance === 'N') newVariants = variants.N
+        if (this.entrance === 'S') newVariants = variants.S
+        if (this.entrance === 'E') newVariants = variants.E
+        if (this.entrance === 'W') newVariants = variants.W
+
+        newVariant = newVariants.filter(
+          variant => 
+            variant !== this.variant 
+            && variant !== this.alreadyTried
+        )
+
+        if (this.finalTry !== "") {
+          this.variant = this.entrance
+          break
         }
 
-        this.alreadyTried = this.variant
-        // console.log(this.alreadyTried)
-        this.variant = newVariant[randomVariant(newVariant.length)]
-        this.next()
+        // Save the variant we already tried
+        this.finalTry = this.alreadyTried
+        this.alreadyTried = this.variant 
+
+        console.log("Already tried: " + this.variant)
+
+        // Randomly pick a new possible variant
+        this.variant = newVariant[RandomVariant(newVariant.length)]
+        console.log("Variant: " + this.variant)
+
+        // Get the exit of the new variant
+        this.exit = GetVariantExit(this.variant, this.entrance)
+        console.log("Exit: " + this.exit)
+
+        // Re-run next function
+        next = this.next()
       }
     }
 
+    if(this.alreadyTried !== "") console.log(next)
     return next
   }
 }

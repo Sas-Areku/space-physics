@@ -1,10 +1,10 @@
 import { updateBackground, drawBackground } from './Background'
 import { updateSpeed, drawSpeed } from './Speed'
 import { updateShip, drawShip } from './Ship'
-import {ObstacleGenerator, obstacles} from './ObstacleGenerator.js'
+import { CourseGenerator, obstacles } from './CourseGenerator.js'
 
 let Setup = () => {
-  ObstacleGenerator(20)
+  CourseGenerator(20)
 }
 
 let Update = () => {

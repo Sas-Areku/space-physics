@@ -8,16 +8,19 @@ import thrust from './textures/thrust.png'
 import logo from './Images/icon2.png'
 
 // Obstacle textures
-import leftDown from './textures/obstacles/leftDown.png'
-import leftUp from './textures/obstacles/leftUp.png'
-import rightDown from './textures/obstacles/rightDown.png'
-import rightUp from './textures/obstacles/rightUp.png'
-import straightHorizontal from './textures/obstacles/straightHorizontal.png'
-import straightVertical from './textures/obstacles/straightVertical.png'
-import terminateDown from './textures/obstacles/terminateDown.png'
-import terminateLeft from './textures/obstacles/terminateLeft.png'
-import terminateRight from './textures/obstacles/terminateRight.png'
-import terminateUp from './textures/obstacles/terminateUp.png'
+
+import NE from './textures/obstacles/NE.png'
+import SE from './textures/obstacles/SE.png'
+import SW from './textures/obstacles/SW.png'
+import NW from './textures/obstacles/NW.png'
+
+import N from './textures/obstacles/N.png'
+import E from './textures/obstacles/E.png'
+import S from './textures/obstacles/S.png'
+import W from './textures/obstacles/W.png'
+
+import NS from './textures/obstacles/NS.png'
+import WE from './textures/obstacles/WE.png'
 
 let App = () => {
 
@@ -42,28 +45,18 @@ let App = () => {
         <img src={ship} id="ship" style={{display: 'none'}}></img>
         <img src={thrust} id="thrust" style={{display: 'none'}}></img>
 
-        <img src={leftDown} id="leftLeft" style={{display: 'none'}}></img>
-        <img src={leftDown} id="rightUp" style={{display: 'none'}}></img>
+        <img src={NE} id="NE" style={{display: 'none'}}></img>
+        <img src={SE} id="SE" style={{display: 'none'}}></img>
+        <img src={SW} id="SW" style={{display: 'none'}}></img>
+        <img src={NW} id="NW" style={{display: 'none'}}></img>
 
-        <img src={leftUp} id="rightLeft" style={{display: 'none'}}></img>
-        <img src={leftUp} id="rightDown" style={{display: 'none'}}></img>
+        <img src={N} id="N" style={{display: 'none'}}></img>
+        <img src={E} id="E" style={{display: 'none'}}></img>
+        <img src={S} id="S" style={{display: 'none'}}></img>
+        <img src={W} id="W" style={{display: 'none'}}></img>
 
-        <img src={rightDown} id="rightRight" style={{display: 'none'}}></img>
-        <img src={rightDown} id="leftUp" style={{display: 'none'}}></img>
-
-        <img src={rightUp} id="leftRight" style={{display: 'none'}}></img>
-        <img src={rightUp} id="leftDown" style={{display: 'none'}}></img>
-
-        <img src={straightHorizontal} id="straightRight" style={{display: 'none'}}></img>
-        <img src={straightHorizontal} id="straightLeft" style={{display: 'none'}}></img>
-
-        <img src={straightVertical} id="straightUp" style={{display: 'none'}}></img>
-        <img src={straightVertical} id="straightDown" style={{display: 'none'}}></img>
-
-        <img src={terminateDown} id="terminateDown" style={{display: 'none'}}></img>
-        <img src={terminateLeft} id="terminateLeft" style={{display: 'none'}}></img>
-        <img src={terminateRight} id="terminateRight" style={{display: 'none'}}></img>
-        <img src={terminateUp} id="terminateUp" style={{display: 'none'}}></img>
+        <img src={NS} id="NS" style={{display: 'none'}}></img>
+        <img src={WE} id="WE" style={{display: 'none'}}></img>
       </div>
 
       <div className="footer">
