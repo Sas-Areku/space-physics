@@ -149,4 +149,4 @@ let drawShip = (ctx) => {
   ctx.restore()
 }
 
-export {updateShip, drawShip, velocity}
+export { updateShip, drawShip, velocity, position }

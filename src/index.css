@@ -24,7 +24,28 @@ body {
 
 .header {
   position: fixed;
+  box-sizing: border-box;
+  width: 100%;
   padding: 20px;
+}
+
+.header h3 {
+  font-size: 24pt;
+  font-weight: 600;
+}
+
+.header ul {
+  padding-left: 20px;
+  font-size: 18pt;
+}
+
+.header ul li {
+  list-style: none;
+  font-weight: 200;
+}
+
+.header strong {
+  font-weight: 400;
 }
 
 .header h2, img {
@@ -39,6 +60,25 @@ body {
 .header h2 {
   font-weight: 900;
   font-size: 48pt;
+}
+
+#course {
+  margin-top: 20px;
+}
+
+#current-turn {
+  color: #43d300;
+  font-weight: 600;
+  font-size: 28pt;
+  text-align: center;
+}
+
+#next-turn {
+  color: white;
+  font-weight: 600;
+  font-size: 28pt;
+  text-align: center;
+  opacity: 0.5;
 }
 
 .container {

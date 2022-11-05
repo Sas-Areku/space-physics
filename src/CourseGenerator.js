@@ -11,17 +11,22 @@ let CourseGenerator = (length) => {
       y: window.innerHeight / 2,
     },
     name: 'N',
-    exit: 'N'
+    exit: 'N',
+    id: 0
   }
 
   // Create starting obstacle
   obstacles.push(new Obstacle(start))
 
   // Generate obstacles in between starting and ending obstacles
+  let nextObstacle
+
   for(let i = 0; i < length; i++) {
 
-    // Generate new variant based
-    let nextObstacle = obstacles[i].next()
+    // Generate next obstacle
+    nextObstacle = obstacles[i].next()
+
+    if (nextObstacle === "over") break // If over, stop generating more obstacles
 
     let newVariant = VariantGenerator(nextObstacle.entrance)
 
@@ -30,7 +35,8 @@ let CourseGenerator = (length) => {
       position: nextObstacle.position,
       name: newVariant.variant,
       entrance: nextObstacle.entrance,
-      exit: newVariant.exit
+      exit: newVariant.exit,
+      id: obstacles.length
     }
 
     // Create new obstacle based on new variant object
@@ -38,46 +44,16 @@ let CourseGenerator = (length) => {
   }
 
   // Ending obstacle
-  /* let lastNext = obstacles[length - 1].next()
+  if (nextObstacle === "over") return // Don't generate last obstacle if over
 
-  if (lastNext !== "over") {
-    if (lastNext.entrance === 'N') {
-      obstacles.push(new Obstacle(
-        {
-          position: lastNext.position,
-          name: 'N',
-          entrance: lastNext.entrance
-        }
-      ))
-
-    } else if (lastNext.entrance === 'S') {
-      obstacles.push(new Obstacle(
-        {
-          position: lastNext.position,
-          name: 'N',
-          entrance: lastNext.entrance
-        }
-      ))
-
-    } else if (lastNext.entrance === 'E') {
-      obstacles.push(new Obstacle(
-        {
-          position: lastNext.position,
-          name: 'E',
-          entrance: lastNext.entrance
-        }
-      ))
-
-    } else if (lastNext.entrance === 'W') {
-      obstacles.push(new Obstacle(
-        {
-          position: lastNext.position,
-          name: 'W',
-          entrance: lastNext.entrance
-        }
-      ))
+  obstacles.push(new Obstacle(
+    {
+      position: nextObstacle.position,
+      name: nextObstacle.entrance,
+      entrance: nextObstacle.entrance,
+      id: obstacles.length
     }
-  } */
+  ))
 }
 
 export { CourseGenerator, obstacles }

@@ -36,6 +36,16 @@ let App = () => {
       <div className="header">
         <img src={logo}></img>
         <h2>Space Physics</h2>
+
+        <div className="right">
+          <div id="course">
+            <h3>Next turn:</h3>
+            <ul>
+              <li id="current-turn"></li>
+              <li id="next-turn"></li>
+            </ul>
+          </div>
+        </div>
       </div>
       
       <div className="container">

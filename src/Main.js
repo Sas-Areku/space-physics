@@ -17,7 +17,7 @@ let Update = () => {
   updateSpeed()
   updateShip()
 
-  for (let i = 0; i < obstacles.length; i++) {
+  for (let i = 0; i < obstacles.length - 1; i++) {
     obstacles[i].update()
   }
 
@@ -27,7 +27,7 @@ let Update = () => {
   // Draw functions
   drawBackground(ctx)
   drawSpeed(ctx)
-  //drawShip(ctx)
+  drawShip(ctx)
 
   for (let i = 0; i < obstacles.length; i++) {
     obstacles[i].display(ctx)
