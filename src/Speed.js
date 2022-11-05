@@ -30,34 +30,33 @@ let drawSpeed = (ctx) => {
   const speed = document.getElementById('speed')
 
    // Draw background grid
+   ctx.save()
    ctx.globalAlpha = alpha
+   ctx.filter = 'blur(2px)'
    ctx.drawImage(speed, position1.x, position1.y)
    ctx.drawImage(speed, position2.x, position2.y)
    ctx.drawImage(speed, position3.x, position3.y)
    ctx.drawImage(speed, position4.x, position4.y)
    ctx.globalAlpha = 1.0
+   ctx.restore()
  }
  
  // Update background position
  let updateSpeed = () => {
 
-  if (velocity.total > 50) {
-    alpha = velocity.total / 500
-    console.log(alpha)
-  } else {
-    alpha = 0
-  }
+  alpha = velocity.total / 100
+
  
    // Move background based on ship velocity
-   position1.x += velocity.x / 10 * -1
-   position2.x += velocity.x / 10 * -1
-   position3.x += velocity.x / 10 * -1
-   position4.x += velocity.x / 10 * -1
+   position1.x += velocity.x / 20 * -1
+   position2.x += velocity.x / 20 * -1
+   position3.x += velocity.x / 20 * -1
+   position4.x += velocity.x / 20 * -1
  
-   position1.y += velocity.y / 10 * -1
-   position2.y += velocity.y / 10 * -1
-   position3.y += velocity.y / 10 * -1
-   position4.y += velocity.y / 10 * -1
+   position1.y += velocity.y / 20 * -1
+   position2.y += velocity.y / 20 * -1
+   position3.y += velocity.y / 20 * -1
+   position4.y += velocity.y / 20 * -1
 
   // Repeat background
   // Cell 1

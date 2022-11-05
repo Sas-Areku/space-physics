@@ -27,17 +27,16 @@ let force = {
 
 let thrust = 0
 let thrustPercent = 0
-let mass = 100
+const mass = 100
 
 let direction = -(Math.PI / 2) // North
 let rotationSpeed = 0
 
 let sas = false
-let sasPermission = false
 let sasStatus = "Off"
 
 let animation = 0
-let animationFPS = 4
+const animationFPS = 4
 let animationFrame = 0
 
 let updateShip = () => {
@@ -59,19 +58,16 @@ let updateShip = () => {
   // Rotate ship
   direction += rotationSpeed
 
-  if (Input.right) rotationSpeed += thrust / 1000 / mass
-  if (Input.left) rotationSpeed -= thrust / 1000 / mass
+  if (Input.right) rotationSpeed += 40 / 1000 / mass
+  if (Input.left) rotationSpeed -= 40 / 1000 / mass
 
   if (rotationSpeed > 0.05) rotationSpeed = 0.05
   if (rotationSpeed < -0.05) rotationSpeed = -0.05
 
-  if (Input.t) {
-    if (sasPermission === false) {
-      sas = !sas
-    }
-    sasPermission = true
+  if (Input.s) {
+    sas = true
   } else {
-    sasPermission = false
+    sas = false
   }
 
   if (sas) {
@@ -133,6 +129,7 @@ let drawShip = (ctx) => {
   }
 
   // Rotate ship
+  ctx.save()
   ctx.translate(position.x + (50 / 2), position.y + (90 / 2))
   ctx.rotate(direction + (Math.PI / 2))
   ctx.translate(-(position.x + (50 / 2)), -(position.y + (90 / 2)))
@@ -149,6 +146,7 @@ let drawShip = (ctx) => {
       thrustPercent / (100 / 25), thrustPercent / (100 / 38) // Size of displayed image
     )
   }
+  ctx.restore()
 }
 
-export {updateShip, drawShip, velocity}
+export { updateShip, drawShip, velocity, position }
