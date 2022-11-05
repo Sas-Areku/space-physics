@@ -1,5 +1,5 @@
 import { velocity, position } from './Ship'
-import { GetVariantExit, RandomVariant, history, variants } from './VariantGenerator'
+import { GetVariantExit, RandomVariant, TurnGenerator, history, variants } from './VariantGenerator'
 import { obstacles } from './CourseGenerator.js'
 
 class Obstacle {
@@ -139,12 +139,19 @@ class Obstacle {
         position.y > tilePosY
     ) {
       // Update next turn UI
-      const currentTurn = document.getElementById("current-turn")
-      const nextTurn = document.getElementById("next-turn")
+      const currentTurnElement = document.getElementById("current-turn")
+      const nextTurnElement = document.getElementById("next-turn")
+      let currentTurn
+      let nextTurn
       let nextId = this.id + 1
-      if (nextId >= obstacles.length - 1) nextId = obstacles.length - 1
-      currentTurn.innerText = obstacles[this.id].variant
-      nextTurn.innerText = obstacles[nextId].variant
+
+      currentTurn = TurnGenerator(obstacles[this.id])
+      nextTurn = TurnGenerator(obstacles[nextId])
+
+      if (nextId === obstacles.length - 1) nextTurn = "Finish!"
+
+      currentTurnElement.innerText = currentTurn
+      nextTurnElement.innerText = nextTurn
 
       // Collision for NS variant
       if (this.variant === "NS") {

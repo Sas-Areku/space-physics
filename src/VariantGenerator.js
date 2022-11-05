@@ -115,4 +115,30 @@ let GetVariantExit = (variant, entrance) => {
   return exit
 }
 
-export { VariantGenerator, GetVariantExit, RandomVariant, history, variants }
+let TurnGenerator = (object) => {
+  let variant = object.variant
+  let exit = object.exit
+  if (variant === "N" && exit === "N") return "Straight"
+  if (variant === "S" && exit === "S") return "Straight"
+  if (variant === "E" && exit === "E") return "Straight"
+  if (variant === "W" && exit === "W") return "Straight"
+
+  if (variant === "NS" && exit === "N") return "Straight"
+  if (variant === "NS" && exit === "S") return "Straight"
+  if (variant === "WE" && exit === "W") return "Straight"
+  if (variant === "WE" && exit === "E") return "Straight"
+
+  if (variant === "NE" && exit === "W") return "Left"
+  if (variant === "NE" && exit === "S") return "Right"
+
+  if (variant === "NW" && exit === "E") return "Right"
+  if (variant === "NW" && exit === "S") return "Left"
+
+  if (variant === "SE" && exit === "N") return "Left"
+  if (variant === "SE" && exit === "W") return "Right"
+
+  if (variant === "SW" && exit === "E") return "Left"
+  if (variant === "SW" && exit === "N") return "Right"
+}
+
+export { VariantGenerator, GetVariantExit, RandomVariant, TurnGenerator, history, variants }
