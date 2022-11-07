@@ -127,6 +127,7 @@ class Obstacle {
     return next
   }
 
+  // Use this instead: https://www.sevenson.com.au/programming/sat/
   collision = () => {
     let size = this.size
     let side = (this.size / 3) - 30
