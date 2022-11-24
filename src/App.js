@@ -7,21 +7,6 @@ import ship from './textures/Ship.png'
 import thrust from './textures/thrust.png'
 import logo from './Images/icon2.png'
 
-// Obstacle textures
-
-import NE from './textures/obstacles/NE.png'
-import SE from './textures/obstacles/SE.png'
-import SW from './textures/obstacles/SW.png'
-import NW from './textures/obstacles/NW.png'
-
-import N from './textures/obstacles/N.png'
-import E from './textures/obstacles/E.png'
-import S from './textures/obstacles/S.png'
-import W from './textures/obstacles/W.png'
-
-import NS from './textures/obstacles/NS.png'
-import WE from './textures/obstacles/WE.png'
-
 let App = () => {
 
   useEffect(() => {
@@ -38,13 +23,7 @@ let App = () => {
         <h2>Space Physics</h2>
 
         <div className="right">
-          <div id="course">
-            <h3>Next turn:</h3>
-            <ul>
-              <li id="current-turn"></li>
-              <li id="next-turn"></li>
-            </ul>
-          </div>
+          
         </div>
       </div>
       
@@ -54,19 +33,6 @@ let App = () => {
         <img src={speed} id="speed" style={{display: 'none'}}></img>
         <img src={ship} id="ship" style={{display: 'none'}}></img>
         <img src={thrust} id="thrust" style={{display: 'none'}}></img>
-
-        <img src={NE} id="NE" style={{display: 'none'}}></img>
-        <img src={SE} id="SE" style={{display: 'none'}}></img>
-        <img src={SW} id="SW" style={{display: 'none'}}></img>
-        <img src={NW} id="NW" style={{display: 'none'}}></img>
-
-        <img src={N} id="N" style={{display: 'none'}}></img>
-        <img src={E} id="E" style={{display: 'none'}}></img>
-        <img src={S} id="S" style={{display: 'none'}}></img>
-        <img src={W} id="W" style={{display: 'none'}}></img>
-
-        <img src={NS} id="NS" style={{display: 'none'}}></img>
-        <img src={WE} id="WE" style={{display: 'none'}}></img>
       </div>
 
       <div className="footer">
