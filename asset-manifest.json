@@ -1,18 +1,8 @@
 {
   "files": {
     "main.css": "/space-physics/static/css/main.ec35fe20.css",
-    "main.js": "/space-physics/static/js/main.11d4ab84.js",
+    "main.js": "/space-physics/static/js/main.afb51acc.js",
     "static/js/787.32921bde.chunk.js": "/space-physics/static/js/787.32921bde.chunk.js",
-    "static/media/S.png": "/space-physics/static/media/S.d700db1bfed08d26d219.png",
-    "static/media/N.png": "/space-physics/static/media/N.57ca8d12eece27765936.png",
-    "static/media/NS.png": "/space-physics/static/media/NS.766852425e23f8f7e3ed.png",
-    "static/media/W.png": "/space-physics/static/media/W.304ed55cb16993911b9d.png",
-    "static/media/NE.png": "/space-physics/static/media/NE.49c973f41f6d55d236a6.png",
-    "static/media/E.png": "/space-physics/static/media/E.6268ed4adccad78c8a7e.png",
-    "static/media/SE.png": "/space-physics/static/media/SE.586366f9e1aa04010e95.png",
-    "static/media/NW.png": "/space-physics/static/media/NW.b428eba7a241c6fca238.png",
-    "static/media/SW.png": "/space-physics/static/media/SW.51c58239bd201de06d33.png",
-    "static/media/WE.png": "/space-physics/static/media/WE.ec9400023b7cfc15fb86.png",
     "static/media/background3.jpg": "/space-physics/static/media/background3.abc669827e03f29c9f5f.jpg",
     "static/media/thrust.png": "/space-physics/static/media/thrust.4284bbdfb0f938df4c9d.png",
     "static/media/speed.png": "/space-physics/static/media/speed.21bdb894f56ff22b17f4.png",
@@ -21,11 +11,11 @@
     "static/media/splashscreen.png": "/space-physics/static/media/splashscreen.28750b61e49b832376f9.png",
     "index.html": "/space-physics/index.html",
     "main.ec35fe20.css.map": "/space-physics/static/css/main.ec35fe20.css.map",
-    "main.11d4ab84.js.map": "/space-physics/static/js/main.11d4ab84.js.map",
+    "main.afb51acc.js.map": "/space-physics/static/js/main.afb51acc.js.map",
     "787.32921bde.chunk.js.map": "/space-physics/static/js/787.32921bde.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ec35fe20.css",
-    "static/js/main.11d4ab84.js"
+    "static/js/main.afb51acc.js"
   ]
 }
