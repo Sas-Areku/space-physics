@@ -1,9 +1,10 @@
 import { updateBackground, drawBackground } from './Background'
 import { updateSpeed, drawSpeed } from './Speed'
 import { updateShip, drawShip } from './Ship'
+import Vector from './Vector'
 
 let Setup = () => {
-  // Setup here
+  // Setup
 }
 
 let Update = () => {
